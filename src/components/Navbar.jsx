@@ -59,13 +59,13 @@ const Navbar = () => {
             ) : (
               <div className="flex items-center gap-3 group relative">
                 <img
-                  src={user.photoURL}
+                  src={user?.photoURL}
                   alt="user"
                   className="w-9 h-9 rounded-full border-2 border-sky-400 hover:cursor-pointer"
                 />
                 <div className="absolute top-10 left-0 bg-white shadow px-3 py-1 rounded hidden group-hover:block dark:bg-gray-800">
                   <span className="text-sm text-gray-700 dark:text-white">
-                    {user.displayName}
+                    {user?.displayName}
                   </span>
                 </div>
                 <button className="bg-red-500 text-white px-3 py-1 rounded hover:cursor-pointer  hover:bg-red-700 transition">
