@@ -1,7 +1,7 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React, { use, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 
@@ -9,13 +9,12 @@ import toast from "react-hot-toast";
 const Register = () => {
     const userData = use(AuthContext)
     const {googleLogin,register,updateUser,user,setUser} = userData;
+    const location = useLocation();
+    const navigate = useNavigate();
 
-    console.log(user)
 
-
-
-  const [showPassword, setShowPassword] = useState(false);
-  const [errorMassage, setErrorMassage] = useState(" ");
+    const [showPassword, setShowPassword] = useState(false);
+    const [errorMassage, setErrorMassage] = useState(" ");
   
 
  
@@ -71,6 +70,7 @@ const Register = () => {
             setUser((prevUser) => {
               return { ...prevUser, displayName: name, photoURL: photoURL };
             });
+            navigate(`${location.state ? location.state : "/"}`);
             toast.success("Register Successfully")  
           })
           .catch((error) => {
@@ -86,9 +86,10 @@ const Register = () => {
    const handleGoogleLogin = () => {
     const provider = new GoogleAuthProvider();
 
-    googleLogin(auth, provider)
+    googleLogin(provider)
       .then((result) => {
         toast.success("Login Successfully");
+        navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
         toast.error(error.message);

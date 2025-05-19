@@ -1,18 +1,32 @@
 import React, { use, useState } from "react";
 import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
-  const [isLoggedIn,setIsLoggedIn] = useState(true); // change to false to test login/register view
+//   const [isLoggedIn,setIsLoggedIn] = useState(true); // change to false to test login/register view
+  const navigate = useNavigate();
 
-  const {user,setUser} = use(AuthContext);
+  const {user,setUser,logout} = use(AuthContext);
 
   const toggleTheme = () => {
     setDarkMode(!darkMode);
     document.documentElement.classList.toggle("dark");
+  };
+
+
+  const handleLogout = () => {
+    logout()
+      .then(() => {
+        navigate("/");
+        toast.success("Logout Successfully")
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
 
   return (
@@ -44,14 +58,14 @@ const Navbar = () => {
               My Groups <span className="text-xs text-red-400">(Private)</span>
             </Link>
 
-            {!isLoggedIn ? (
+            {!user ? (
               <>
                 <Link to="/login" className="text-sky-500 hover:underline">
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="bg-sky-500 text-white px-3 py-1 rounded hover:bg-sky-600 transition"
+                  className=" text-sky-500 hover:underline"
                 >
                   Register
                 </Link>
@@ -68,7 +82,7 @@ const Navbar = () => {
                     {user?.displayName}
                   </span>
                 </div>
-                <button className="bg-red-500 text-white px-3 py-1 rounded hover:cursor-pointer  hover:bg-red-700 transition">
+                <button onClick={handleLogout} className="bg-red-500 text-white px-3 py-1 rounded hover:cursor-pointer  hover:bg-red-700 transition">
                   Logout
                 </button>
               </div>
@@ -128,7 +142,7 @@ const Navbar = () => {
               My Groups <span className="text-xs text-red-400">(Private)</span>
             </Link>
 
-            {!isLoggedIn ? (
+            {!user ? (
               <>
                 <Link
                   to="/login"

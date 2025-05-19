@@ -2,7 +2,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 import React, { use, useRef, useState } from "react";
 import { auth } from "../Firebase/firebase.init";
 import { AuthContext } from "../context/AuthContext";
-import { Link, useNavigate } from "react-router";
+import { Link, useLoaderData, useLocation, useNavigate } from "react-router";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import toast from "react-hot-toast";
 
@@ -11,9 +11,12 @@ const Login = () => {
     const { user, logIn,googleLogin } = use(AuthContext);
 
     const emailRef = useRef();
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log(location)
 
-     const [showPassword, setShowPassword] = useState(false);
-     const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
+     
 
 
 
@@ -27,7 +30,7 @@ const Login = () => {
     logIn(email, password)
       .then((result) => {
         console.log(result.user);
-        navigate('/');
+        navigate(`${location.state ? location.state : "/"}`);
         toast.success("Login Successfully");
       })
       .catch((error) => {
@@ -38,10 +41,10 @@ const Login = () => {
   const handleGoogleLogin = () => {
     const provider = new GoogleAuthProvider();
 
-    googleLogin(auth, provider)
+    googleLogin(provider)
       .then((result) => {
         toast.success("Login Successfully");
-        navigate("/");
+        navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
         toast.error(error.message);

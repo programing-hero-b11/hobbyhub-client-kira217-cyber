@@ -7,6 +7,7 @@ import CreateGroup from "../pages/CreateGroup";
 import GroupDetails from "../pages/GroupDetails";
 import UpdateGroup from "../pages/UpdateGroup";
 import MyGroups from "../pages/MyGroups";
+import PrivetRoute from "../context/PrivetRoute";
 
 export const router = createBrowserRouter([
   {
@@ -27,11 +28,15 @@ export const router = createBrowserRouter([
       },
       { 
         path: "groups/create", 
-        Component: CreateGroup 
+        element:<PrivetRoute>
+            <CreateGroup></CreateGroup>
+        </PrivetRoute>
       },
       { 
         path: "myGroups", 
-        Component: MyGroups 
+        element:<PrivetRoute>
+            <MyGroups></MyGroups>
+        </PrivetRoute>
       },
       { 
         path: "group/:id", 
