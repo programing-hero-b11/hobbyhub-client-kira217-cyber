@@ -1,6 +1,7 @@
 import React, { use, useState } from "react";
 import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
-import { Link, useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router";
+import './Navbar.css'
 import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 
@@ -34,41 +35,41 @@ const Navbar = () => {
       <nav className="bg-white dark:bg-gray-900 shadow-md w-full z-50 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-bold text-sky-500">
+          <NavLink to="/" className="text-2xl font-bold text-sky-500">
             HobbyHub
-          </Link>
+          </NavLink>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-6">
-            <Link to="/" className="text-sky-500 font-medium">
+            <NavLink to="/" className="text-sky-500 font-medium">
               Home
-            </Link>
-            <Link to="/groups" className="text-sky-500 font-medium">
+            </NavLink>
+            <NavLink to="/allGroups" className="text-sky-500 font-medium">
               All Groups
-            </Link>
+            </NavLink>
 
-            <Link
+            <NavLink
               to="/groups/create"
               className="text-sky-500 font-medium"
             >
               Create Group{" "}
               <span className="text-xs text-red-400">(Private)</span>
-            </Link>
-            <Link to="/myGroups" className="text-sky-500 font-medium">
+            </NavLink>
+            <NavLink to="/myGroups" className="text-sky-500 font-medium">
               My Groups <span className="text-xs text-red-400">(Private)</span>
-            </Link>
+            </NavLink>
 
             {!user ? (
               <>
-                <Link to="/login" className="text-sky-500 hover:underline">
+                <NavLink to="/login" className="text-sky-500 hover:underline">
                   Login
-                </Link>
-                <Link
+                </NavLink>
+                <NavLink
                   to="/register"
                   className=" text-sky-500 hover:underline"
                 >
                   Register
-                </Link>
+                </NavLink>
               </>
             ) : (
               <div className="flex items-center gap-3 group relative">
@@ -116,48 +117,48 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden bg-white dark:bg-gray-900 px-6 py-4 space-y-3">
-            <Link to="/" onClick={() => setIsOpen(false)} className="block text-sky-500 hover:underline">
+            <NavLink to="/" onClick={() => setIsOpen(false)} className="block text-sky-500 hover:underline">
               Home
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/groups"
               onClick={() => setIsOpen(false)}
               className="block text-sky-500 hover:underline"
             >
               All Groups
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/groups/create"
               onClick={() => setIsOpen(false)}
               className="block text-sky-500 hover:underline"
             >
               Create Group{" "}
               <span className="text-xs text-red-400">(Private)</span>
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/myGroups"
               onClick={() => setIsOpen(false)}
               className="block text-sky-500 hover:underline"
             >
               My Groups <span className="text-xs text-red-400">(Private)</span>
-            </Link>
+            </NavLink>
 
             {!user ? (
               <>
-                <Link
+                <NavLink
                   to="/login"
                   onClick={() => setIsOpen(false)}
                   className="block text-sky-500 hover:underline"
                 >
                   Login
-                </Link>
-                <Link
+                </NavLink>
+                <NavLink
                   to="/register"
                   onClick={() => setIsOpen(false)}
                   className="block text-sky-500 hover:underline"
                 >
                   Register
-                </Link>
+                </NavLink>
               </>
             ) : (
               <>

@@ -8,6 +8,7 @@ import GroupDetails from "../pages/GroupDetails";
 import UpdateGroup from "../pages/UpdateGroup";
 import MyGroups from "../pages/MyGroups";
 import PrivetRoute from "../context/PrivetRoute";
+import AllGroups from "../pages/AllGroups";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: "register",
         Component: Register,
+      },
+      {
+        path:"allGroups",
+        Component:AllGroups,
       },
       { 
         path: "groups/create", 
