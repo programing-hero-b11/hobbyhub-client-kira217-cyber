@@ -1,18 +1,54 @@
-import { createContext } from "react";
+import { createContext, useState, useEffect } from "react";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithPopup,
+  updateProfile,
+} from "firebase/auth";
+import { auth } from "../Firebase/firebase.init";
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
 
+  // Register
+  const register = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
+  // Google Login
+  const googleLogin = (authProvider) => {
+    return signInWithPopup(auth, authProvider);
+  };
 
+  // Update Profile
+  const updateUser = (updateData) => {
+    return updateProfile(auth.currentUser, updateData);
+  };
 
-    const userInfo = {
-    email: "raihan@bogra.com",
-    password: "1234543",
-    };
+  // Auth State Observer
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
 
-  return <AuthContext value={userInfo}>{children}</AuthContext>;
+    return () => unsubscribe();
+  }, []);
+
+  const userInfo = {
+    user,
+    setUser,
+    register,
+    updateUser,
+    googleLogin,
+  };
+
+  return (
+    <AuthContext value={userInfo}>
+      {children}
+    </AuthContext>
+  );
 };
 
 export default AuthProvider;
