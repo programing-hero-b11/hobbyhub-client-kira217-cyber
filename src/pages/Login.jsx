@@ -53,8 +53,7 @@ const Login = () => {
 
   return (
     <>
-      <h1 className="text-5xl text-center mb-6 mt-8 font-bold">Login Page</h1>
-      <div className="flex justify-center mt-24">
+      <div className="flex justify-center mt-12 mb-24">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">
             <h1 className="text-3xl text-center font-bold">Login now!</h1>
@@ -135,7 +134,7 @@ const Login = () => {
               </span>
             </p>
             <div className="mt-5">
-              <button className="btn">
+              <button className="btn text-sky-500 dark:bg-gray-900">
                 <Link to="/">Back to Home</Link>
               </button>
             </div>

@@ -99,9 +99,6 @@ const Register = () => {
 
   return (
     <>
-      <h1 className="text-5xl text-center mb-6 mt-10 font-bold">
-        Register Page
-      </h1>
       <div className="flex justify-center mt-24">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">

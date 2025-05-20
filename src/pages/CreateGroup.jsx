@@ -1,11 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect, use } from "react";
+import { AuthContext } from "../context/AuthContext";
+import Swal from "sweetalert2";
 
 const CreateGroup = () => {
-  // Dummy user data for design
-  const user = {
-    displayName: "John Doe",
-    email: "john@example.com",
-  };
+  const { user } = use(AuthContext);
 
   const [formData, setFormData] = useState({
     groupName: "",
@@ -15,7 +13,19 @@ const CreateGroup = () => {
     maxMembers: "",
     startDate: "",
     imageUrl: "",
+    name: "",
+    email: "",
   });
+
+  useEffect(() => {
+    if (user) {
+      setFormData((prev) => ({
+        ...prev,
+        name: user.displayName || "",
+        email: user.email || "",
+      }));
+    }
+  }, [user]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,7 +33,28 @@ const CreateGroup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     console.log("Form Submitted:", formData);
+
+    Swal.fire({
+  position: "top",
+  icon: "success",
+  title: "Create Group Successfully",
+  showConfirmButton: false,
+  timer: 1500
+});
+    // Reset the form (keep user name & email)
+    setFormData({
+      groupName: "",
+      category: "",
+      description: "",
+      location: "",
+      maxMembers: "",
+      startDate: "",
+      imageUrl: "",
+      name: user?.displayName || "",
+      email: user?.email || "",
+    });
   };
 
   const categories = [
@@ -40,7 +71,9 @@ const CreateGroup = () => {
   return (
     <div className="min-h-screen px-4 py-8 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
       <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold mb-6 text-sky-500">Create a New Hobby Group</h2>
+        <h2 className="text-2xl font-bold mb-6 text-sky-500">
+          Create a New Hobby Group
+        </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Group Name */}
           <div>
@@ -65,9 +98,13 @@ const CreateGroup = () => {
               className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
               required
             >
-              <option value="" disabled>Select a category</option>
+              <option value="" disabled>
+                Select a category
+              </option>
               {categories.map((cat) => (
-                <option key={cat} value={cat}>{cat}</option>
+                <option key={cat} value={cat}>
+                  {cat}
+                </option>
               ))}
             </select>
           </div>
@@ -128,7 +165,7 @@ const CreateGroup = () => {
           <div>
             <label className="block font-medium mb-1">Image URL</label>
             <input
-              type="url"
+              type="text"
               name="imageUrl"
               value={formData.imageUrl}
               onChange={handleChange}
@@ -143,7 +180,8 @@ const CreateGroup = () => {
               <label className="block font-medium mb-1">User Name</label>
               <input
                 type="text"
-                value={user.displayName}
+                name="name"
+                value={formData.name}
                 readOnly
                 className="w-full px-3 py-2 border rounded bg-gray-100 dark:bg-gray-700 dark:border-gray-600"
               />
@@ -152,7 +190,8 @@ const CreateGroup = () => {
               <label className="block font-medium mb-1">User Email</label>
               <input
                 type="email"
-                value={user.email}
+                name="email"
+                value={formData.email}
                 readOnly
                 className="w-full px-3 py-2 border rounded bg-gray-100 dark:bg-gray-700 dark:border-gray-600"
               />
