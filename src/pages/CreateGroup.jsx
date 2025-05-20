@@ -55,6 +55,21 @@ const CreateGroup = () => {
       name: user?.displayName || "",
       email: user?.email || "",
     });
+
+    // send the form info in database
+
+    fetch('http://localhost:3000/groups',{
+      method:'POST',
+      headers:{
+        'content-type' : 'application/json'
+      },
+      body:JSON.stringify(formData)
+
+    }).then(res=>res.json()).then(data=>{
+      console.log('after added the data', data)
+    })
+
+
   };
 
   const categories = [

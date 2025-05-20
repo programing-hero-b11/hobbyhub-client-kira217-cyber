@@ -9,6 +9,7 @@ import UpdateGroup from "../pages/UpdateGroup";
 import MyGroups from "../pages/MyGroups";
 import PrivetRoute from "../context/PrivetRoute";
 import AllGroups from "../pages/AllGroups";
+import Loading from "../pages/Loading";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,8 @@ export const router = createBrowserRouter([
       },
       {
         path:"allGroups",
+        hydrateFallbackElement:<Loading></Loading>,
+        loader:()=>fetch('http://localhost:3000/groups'),
         Component:AllGroups,
       },
       { 
@@ -38,18 +41,26 @@ export const router = createBrowserRouter([
         </PrivetRoute>
       },
       { 
-        path: "myGroups", 
+        path: "myGroups",
+        loader:()=>fetch('http://localhost:3000/groups'), 
         element:<PrivetRoute>
             <MyGroups></MyGroups>
         </PrivetRoute>
       },
       { 
-        path: "group/:id", 
-        Component: GroupDetails
+        path: "groups/:id",
+        hydrateFallbackElement:<Loading></Loading>,
+        loader:({params})=>fetch(`http://localhost:3000/groups/${params.id}`),
+        element:<PrivetRoute>
+          <GroupDetails></GroupDetails>
+        </PrivetRoute>
       },
       { 
-        path: "updateGroup/:id", 
-        Component: UpdateGroup
+        path: "updateGroup/:id",
+        loader:({params})=>fetch(`http://localhost:3000/groups/${params.id}`), 
+        element:<PrivetRoute>
+          <UpdateGroup></UpdateGroup>
+        </PrivetRoute>
       },
     ],
   },
