@@ -10,11 +10,13 @@ import MyGroups from "../pages/MyGroups";
 import PrivetRoute from "../context/PrivetRoute";
 import AllGroups from "../pages/AllGroups";
 import Loading from "../pages/Loading";
+import ErrorPage from "../pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
+    errorElement: <ErrorPage />, 
     children: [
       {
         index: true,

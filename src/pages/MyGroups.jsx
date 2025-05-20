@@ -1,19 +1,20 @@
 import React, { use, useState } from "react";
 import { useLoaderData } from "react-router";
 import MyGroupCard from "../components/MyGroupCard";
-import Swal from "sweetalert2";
 import { AuthContext } from "../context/AuthContext";
+import NoGroupCard from "../components/NoGroupCard";
 
 const MyGroups = () => {
   const loadedGroups = useLoaderData();
-  const [groups, setGroups] = useState(loadedGroups);
+  const { user } = use(AuthContext);
 
-  const {user,setUser} = use(AuthContext)
+  const [groups, setGroups] = useState(
+    loadedGroups.filter((group) => group.email == user?.email)
+  );
 
-  // Delete handler
-const handleDeleteGroup = (id) => {
-    const updatedGroups = groups.filter(group => group._id !== id);
-    setGroups(updatedGroups); // ✅ Update UI instantly
+  const handleDeleteGroup = (id) => {
+    const updatedGroups = groups.filter((group) => group._id !== id);
+    setGroups(updatedGroups);
   };
 
   return (
@@ -23,23 +24,33 @@ const handleDeleteGroup = (id) => {
           My Hobby Groups
         </h1>
 
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white dark:bg-gray-800 rounded-lg shadow">
-            <thead>
-              <tr className="text-left bg-gray-200 dark:bg-gray-700">
-                <th className="px-4 py-2">Group Name</th>
-                <th className="px-4 py-2">Category</th>
-                <th className="px-4 py-2">Start Date</th>
-                <th className="px-4 py-2">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {groups.map((group) => (
-                <MyGroupCard key={group._id} onDelete={handleDeleteGroup} group={group} />
-              ))}
-            </tbody>
-          </table>
-        </div>
+        {groups.length === 0 ? (
+          <div className="mt-10">
+            <NoGroupCard />
+          </div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="min-w-full bg-white dark:bg-gray-800 rounded-lg shadow">
+              <thead>
+                <tr className="text-left bg-gray-200 dark:bg-gray-700">
+                  <th className="px-4 py-2">Group Name</th>
+                  <th className="px-4 py-2">Category</th>
+                  <th className="px-4 py-2">Start Date</th>
+                  <th className="px-4 py-2">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {groups.map((group) => (
+                  <MyGroupCard
+                    key={group._id}
+                    group={group}
+                    onDelete={handleDeleteGroup}
+                  />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   );
