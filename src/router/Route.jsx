@@ -57,6 +57,7 @@ export const router = createBrowserRouter([
       },
       { 
         path: "updateGroup/:id",
+        hydrateFallbackElement:<Loading></Loading>,
         loader:({params})=>fetch(`http://localhost:3000/groups/${params.id}`), 
         element:<PrivetRoute>
           <UpdateGroup></UpdateGroup>

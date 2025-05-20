@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router";
+import Swal from "sweetalert2";
 
 const UpdateGroup = () => {
-  const [formData, setFormData] = useState({
-    groupName: "",
-    category: "",
-    description: "",
-    location: "",
-    maxMembers: "",
-    startDate: "",
-    imageUrl: "",
-    name: "",
-    email: "",
-  });
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  //   const [formData, setFormData] = useState({
+  //     groupName: "",
+  //     category: "",
+  //     description: "",
+  //     location: "",
+  //     maxMembers: "",
+  //     startDate: "",
+  //     imageUrl: "",
+  //     name: "",
+  //     email: "",
+  //   });
+  //   const handleChange = (e) => {
+  //     setFormData({ ...formData, [e.target.name]: e.target.value });
+  //   };
   const categories = [
     "Drawing & Painting",
     "Photography",
@@ -40,13 +41,44 @@ const UpdateGroup = () => {
     email,
   } = group;
 
+  const handleUpdateGroup = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const updateGroup = Object.fromEntries(formData.entries());
+
+    // console.log(updateGroup);
+
+    // send the update group in the database
+
+    fetch(`http://localhost:3000/groups/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateGroup),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          Swal.fire({
+            position: "top",
+            icon: "success",
+            title: "Updated Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+
   return (
     <div className="min-h-screen px-4 py-8 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
       <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold mb-6 text-sky-500">
           Update Your Hobby Group
         </h2>
-        <form className="space-y-4">
+        <form onSubmit={handleUpdateGroup} className="space-y-4">
           {/* Group Name */}
           <div>
             <label className="block font-medium mb-1">Group Name</label>
@@ -54,7 +86,7 @@ const UpdateGroup = () => {
               type="text"
               name="groupName"
               defaultValue={groupName}
-              onChange={handleChange}
+              //   onChange={handleChange}
               className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
               required
             />
@@ -66,7 +98,7 @@ const UpdateGroup = () => {
             <select
               name="category"
               defaultValue={category}
-              onChange={handleChange}
+              //   onChange={handleChange}
               className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
               required
             >
@@ -87,7 +119,7 @@ const UpdateGroup = () => {
             <textarea
               name="description"
               defaultValue={description}
-              onChange={handleChange}
+              //   onChange={handleChange}
               rows="4"
               className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
               required
@@ -101,7 +133,7 @@ const UpdateGroup = () => {
               type="text"
               name="location"
               defaultValue={location}
-              onChange={handleChange}
+              //   onChange={handleChange}
               className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
               required
             />
@@ -114,7 +146,7 @@ const UpdateGroup = () => {
               type="number"
               name="maxMembers"
               defaultValue={maxMembers}
-              onChange={handleChange}
+              //   onChange={handleChange}
               className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
               required
             />
@@ -127,7 +159,7 @@ const UpdateGroup = () => {
               type="date"
               name="startDate"
               defaultValue={startDate}
-              onChange={handleChange}
+              //   onChange={handleChange}
               className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
               required
             />
@@ -140,7 +172,7 @@ const UpdateGroup = () => {
               type="text"
               name="imageUrl"
               defaultValue={imageUrl}
-              onChange={handleChange}
+              //   onChange={handleChange}
               className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
               required
             />

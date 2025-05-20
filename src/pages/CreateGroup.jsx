@@ -36,13 +36,6 @@ const CreateGroup = () => {
 
     console.log("Form Submitted:", formData);
 
-    Swal.fire({
-  position: "top",
-  icon: "success",
-  title: "Create Group Successfully",
-  showConfirmButton: false,
-  timer: 1500
-});
     // Reset the form (keep user name & email)
     setFormData({
       groupName: "",
@@ -58,18 +51,24 @@ const CreateGroup = () => {
 
     // send the form info in database
 
-    fetch('http://localhost:3000/groups',{
-      method:'POST',
-      headers:{
-        'content-type' : 'application/json'
+    fetch("http://localhost:3000/groups", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
       },
-      body:JSON.stringify(formData)
-
-    }).then(res=>res.json()).then(data=>{
-      console.log('after added the data', data)
+      body: JSON.stringify(formData),
     })
-
-
+      .then((res) => res.json())
+      .then((data) => {
+        Swal.fire({
+          position: "top",
+          icon: "success",
+          title: "Create Group Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        console.log("after added the data", data);
+      });
   };
 
   const categories = [
