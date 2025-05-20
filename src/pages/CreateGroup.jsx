@@ -215,7 +215,7 @@ const CreateGroup = () => {
           {/* Submit */}
           <button
             type="submit"
-            className="bg-sky-500 hover:bg-sky-600 text-white px-6 py-2 rounded mt-4 transition"
+            className="bg-sky-500 hover:cursor-pointer hover:bg-sky-600 text-white px-6 py-2 rounded mt-4 transition"
           >
             Create Group
           </button>

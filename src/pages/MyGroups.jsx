@@ -11,19 +11,10 @@ const MyGroups = () => {
   const {user,setUser} = use(AuthContext)
 
   // Delete handler
-//   const handleDelete = (id) => {
-//     fetch(`https://localhost:3000/groups/${id}`, {
-//       method: "DELETE",
-//     })
-//       .then((res) => res.json())
-//       .then((data) => {
-//         if (data.deletedCount > 0) {
-//           Swal.fire("Deleted!", "Group has been removed.", "success");
-//           const remaining = groups.filter((group) => group._id !== id);
-//           setGroups(remaining);
-//         }
-//       });
-//   };
+const handleDeleteGroup = (id) => {
+    const updatedGroups = groups.filter(group => group._id !== id);
+    setGroups(updatedGroups); // ✅ Update UI instantly
+  };
 
   return (
     <div className="min-h-screen px-4 py-8 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
@@ -44,7 +35,7 @@ const MyGroups = () => {
             </thead>
             <tbody>
               {groups.map((group) => (
-                <MyGroupCard key={group._id} group={group} />
+                <MyGroupCard key={group._id} onDelete={handleDeleteGroup} group={group} />
               ))}
             </tbody>
           </table>
