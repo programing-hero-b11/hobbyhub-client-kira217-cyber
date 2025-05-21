@@ -6,7 +6,8 @@ import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const { googleLogin, register, updateUser, user, setUser } = React.useContext(AuthContext);
+  const { googleLogin, register, updateUser, user, setUser } =
+    React.useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -76,7 +77,9 @@ const Register = () => {
     <div className="flex justify-center mt-12 mb-24 p-2">
       <div className="card w-full max-w-sm bg-base-100 text-base-content shadow-2xl">
         <div className="card-body rai">
-          <h1 className="text-3xl text-sky-500 text-center font-bold">Register now!</h1>
+          <h1 className="text-3xl text-sky-500 text-center font-bold">
+            Register now!
+          </h1>
 
           <form onSubmit={handleRegister} className="space-y-4">
             <div>
@@ -126,18 +129,34 @@ const Register = () => {
                 onClick={() => setShowPassword(!showPassword)}
                 className="btn btn-sm rai absolute top-9 right-2"
               >
-                {showPassword ? <FaEyeSlash className="text-sky-500" /> : <FaEye className="text-sky-500"  />}
+                {showPassword ? (
+                  <FaEyeSlash className="text-sky-500" />
+                ) : (
+                  <FaEye className="text-sky-500" />
+                )}
               </button>
             </div>
 
             <div className="flex items-center space-x-2 mt-2">
-              <input type="checkbox" name="terms" className="checkbox checkbox-sm" />
-              <span className="label-text">Accept Terms and Conditions</span>
+              <input
+                type="checkbox"
+                name="terms"
+                className="w-4 h-4 rounded border border-black dark:border-white bg-white dark:bg-black text-black dark:text-white cursor-pointer"
+              />
+
+              <span className="label-text text-sky-500">
+                Accept Terms and Conditions
+              </span>
             </div>
 
-            {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
+            {errorMessage && (
+              <p className="text-red-500 text-sm">{errorMessage}</p>
+            )}
 
-            <button type="submit" className="btn btn-neutral w-full text-xl mt-4">
+            <button
+              type="submit"
+              className="btn btn-neutral w-full text-xl mt-4"
+            >
               Register
             </button>
           </form>
@@ -155,10 +174,22 @@ const Register = () => {
               className="mr-2"
             >
               <path fill="#fff" d="M0 0h512v512H0z" />
-              <path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341" />
-              <path fill="#4285f4" d="M386 400a140 175 0 0053-179H260v74h102q-7 37-38 57" />
-              <path fill="#fbbc02" d="M90 341a208 200 0 010-171l63 49q-12 37 0 73" />
-              <path fill="#ea4335" d="M153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55" />
+              <path
+                fill="#34a853"
+                d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
+              />
+              <path
+                fill="#4285f4"
+                d="M386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
+              />
+              <path
+                fill="#fbbc02"
+                d="M90 341a208 200 0 010-171l63 49q-12 37 0 73"
+              />
+              <path
+                fill="#ea4335"
+                d="M153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
+              />
             </svg>
             Login with Google
           </button>
@@ -166,7 +197,7 @@ const Register = () => {
           <p className="mt-4 text-center">
             Already have an account?{" "}
             <Link to="/login" className="text-blue-500 underline">
-               <span className="text-sky-500">Login</span>
+              <span className="text-sky-500">Login</span>
             </Link>
           </p>
 

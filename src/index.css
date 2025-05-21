@@ -8,6 +8,9 @@ body {
 .dark body {
   @apply bg-gray-900 text-white;
 }
+input[type="checkbox"] {
+  @apply w-4 h-4 rounded border border-black dark:border-white bg-white dark:bg-black text-black dark:text-white cursor-pointer;
+}
 
 nav {
   background-color: white;
@@ -101,6 +104,7 @@ label {
   font-weight: 600;
   display: block;
 }
+
 
 
 .dark label {
