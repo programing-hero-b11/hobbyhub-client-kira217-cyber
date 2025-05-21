@@ -25,7 +25,6 @@ const Banner = () => {
           <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider uppercase rounded-full bg-sky-100 text-sky-900 dark:bg-sky-900 dark:text-sky-100">
             HobbyHub
           </p>
-          php-template Copy Edit
           <h2 className="mb-3 text-3xl font-extrabold leading-none sm:text-4xl text-gray-900 dark:text-white">
             Connect through shared{" "}
             <span className="text-sky-500">
