@@ -62,13 +62,13 @@ const MyGroupCard = ({ group, onDelete }) => {
         <td className="px-4 py-3 space-x-2">
           <button
             onClick={handleUpdate}
-            className="bg-blue-500 hover:bg-blue-700 text-white px-3 py-1 rounded"
+            className="bg-blue-500 hover:cursor-pointer hover:bg-blue-700 text-white px-3 py-1 rounded"
           >
             Update
           </button>
           <button
             onClick={() => handleDelete(_id)}
-            className="bg-red-500 hover:bg-red-700 text-white px-3 py-1 rounded"
+            className="bg-red-500 hover:cursor-pointer hover:bg-red-700 text-white px-3 py-1 rounded"
           >
             Delete
           </button>
@@ -87,13 +87,13 @@ const MyGroupCard = ({ group, onDelete }) => {
         <div className="mt-4 flex gap-2">
           <button
             onClick={handleUpdate}
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white text-sm py-2 px-4 rounded"
+            className="w-full bg-blue-500 hover:cursor-pointer hover:bg-blue-600 text-white text-sm py-2 px-4 rounded"
           >
             Update
           </button>
           <button
             onClick={() => handleDelete(_id)}
-            className="w-full bg-red-500 hover:bg-red-600 text-white text-sm py-2 px-4 rounded"
+            className="w-full bg-red-500 hover:cursor-pointer hover:bg-red-600 text-white text-sm py-2 px-4 rounded"
           >
             Delete
           </button>

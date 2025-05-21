@@ -18,7 +18,7 @@ const ErrorPage = () => {
             "The page you're looking for doesn't exist."}
         </p>
         <Link to="/">
-          <a className="inline-block mt-6 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+          <a className="inline-block hover:cursor-pointer mt-6 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
             Go Home
           </a>
         </Link>

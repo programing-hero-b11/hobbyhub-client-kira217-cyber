@@ -48,8 +48,8 @@ const GroupDetails = () => {
   };
 
   return (
-    <div className="min-h-screen px-4 py-10 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
-      <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+    <div className="min-h-screen px-4 rai py-10 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+      <div className="max-w-4xl mx-auto rai border bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
         <img src={imageUrl} alt={groupName} className="w-full h-64 object-cover" />
         <div className="p-6">
           <h2 className="text-3xl font-bold text-sky-500 mb-4">{groupName}</h2>
@@ -82,14 +82,14 @@ const GroupDetails = () => {
               {hasJoined ? (
                 <button
                   onClick={handleLeave}
-                  className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded"
+                  className="bg-red-500 hover:cursor-pointer hover:bg-red-600 text-white px-5 py-2 rounded"
                 >
                   Leave Group
                 </button>
               ) : (
                 <button
                   onClick={handleJoin}
-                  className="bg-sky-500 hover:bg-sky-600 text-white px-5 py-2 rounded"
+                  className="bg-sky-500 hover:cursor-pointer hover:bg-sky-600 text-white px-5 py-2 rounded"
                 >
                   Join Group
                 </button>
