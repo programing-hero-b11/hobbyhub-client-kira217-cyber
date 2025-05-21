@@ -23,7 +23,7 @@ const GroupCard = ({group}) => {
                 </p>    
                 <Link
                   to={`/groups/${_id}`}
-                  className="inline-block bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded transition"
+                  className="inline-block hover:cursor-pointer bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded transition"
                 >
                   See More
                 </Link>

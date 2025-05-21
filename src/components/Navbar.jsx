@@ -1,6 +1,6 @@
 import React, { useState, useEffect, use } from "react";
 import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
-import { NavLink, useNavigate } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import "./Navbar.css";
 import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
@@ -48,9 +48,9 @@ const Navbar = () => {
       <nav className="bg-white dark:bg-gray-900 shadow-md w-full z-50 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
           {/* Logo */}
-          <NavLink to="/" className="text-2xl font-bold text-sky-500">
-            HobbyHub
-          </NavLink>
+          <Link to="/" >
+            <span className="text-2xl font-bold text-sky-500">HobbyHub</span>
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-6">
@@ -61,21 +61,20 @@ const Navbar = () => {
               All Groups
             </NavLink>
             <NavLink to="/groups/create" className="text-sky-500 font-medium">
-              Create Group{" "}
-              <span className="text-xs text-red-400">(Private)</span>
+              Create Group
             </NavLink>
             <NavLink to="/myGroups" className="text-sky-500 font-medium">
-              My Groups <span className="text-xs text-red-400">(Private)</span>
+              My Groups 
             </NavLink>
 
             {!user ? (
               <>
-                <NavLink to="/login" className="text-sky-500 hover:underline">
+                <NavLink to="/login" className="text-sky-500 hover:cursor-pointer hover:underline">
                   Login
                 </NavLink>
                 <NavLink
                   to="/register"
-                  className="text-sky-500 hover:underline"
+                  className="text-sky-500 hover:cursor-pointer hover:underline"
                 >
                   Register
                 </NavLink>
@@ -94,7 +93,7 @@ const Navbar = () => {
                 </div>
                 <button
                   onClick={handleLogout}
-                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700 transition"
+                  className="bg-red-500 hover:cursor-pointer text-white px-3 py-1 rounded hover:bg-red-700 transition"
                 >
                   Logout
                 </button>
@@ -132,28 +131,28 @@ const Navbar = () => {
             <NavLink
               to="/"
               onClick={() => setIsOpen(false)}
-              className="block text-sky-500 hover:underline"
+              className="block hover:cursor-pointer text-sky-500 hover:underline"
             >
               Home
             </NavLink>
             <NavLink
               to="/allGroups"
               onClick={() => setIsOpen(false)}
-              className="block text-sky-500 hover:underline"
+              className="block hover:cursor-pointer text-sky-500 hover:underline"
             >
               All Groups
             </NavLink>
             <NavLink
               to="/groups/create"
               onClick={() => setIsOpen(false)}
-              className="block text-sky-500 hover:underline"
+              className="block hover:cursor-pointer text-sky-500 hover:underline"
             >
               Create Group
             </NavLink>
             <NavLink
               to="/myGroups"
               onClick={() => setIsOpen(false)}
-              className="block text-sky-500 hover:underline"
+              className="block hover:cursor-pointer text-sky-500 hover:underline"
             >
               My Groups
             </NavLink>
@@ -163,14 +162,14 @@ const Navbar = () => {
                 <NavLink
                   to="/login"
                   onClick={() => setIsOpen(false)}
-                  className="block text-sky-500 hover:underline"
+                  className="block hover:cursor-pointer text-sky-500 hover:underline"
                 >
                   Login
                 </NavLink>
                 <NavLink
                   to="/register"
                   onClick={() => setIsOpen(false)}
-                  className="block text-sky-500 hover:underline"
+                  className="block hover:cursor-pointer text-sky-500 hover:underline"
                 >
                   Register
                 </NavLink>
@@ -183,13 +182,13 @@ const Navbar = () => {
                     alt="user"
                     className="w-9 h-9 rounded-full border-2 border-sky-400"
                   />
-                  <span className="text-sm text-gray-700 dark:text-white">
+                  <p className="text-sm text-gray-700 dark:text-white">
                     {user.displayName}
-                  </span>
+                  </p>
                 </div>
                 <button
                   onClick={handleLogout}
-                  className="text-red-500 hover:underline"
+                  className="text-red-500 hover:cursor-pointer hover:underline"
                 >
                   Logout
                 </button>

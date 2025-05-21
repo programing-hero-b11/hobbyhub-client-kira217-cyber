@@ -1,5 +1,5 @@
 @import "tailwindcss";
-/* @plugin "daisyui"; */
+@plugin "daisyui";
 
 body {
   @apply bg-white text-black transition-colors duration-300;
@@ -52,6 +52,19 @@ h4 {
 
 /* Dark mode - requires Tailwind's darkMode: 'class' */
 .dark h4{
+  color: white; /* This is Tailwind's gray-300 */
+}
+
+h3 {
+  color: black;
+  font-weight: 600;
+  font-size: large;
+}
+
+/* Dark mode - requires Tailwind's darkMode: 'class' */
+.dark h3{
+    font-weight: 600;
+  font-size: large;
   color: white; /* This is Tailwind's gray-300 */
 }
 /* Light mode */
