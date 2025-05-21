@@ -73,7 +73,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-center mt-12 mb-24">
+    <div className="flex justify-center mt-12 mb-24 p-2">
       <div className="card w-full max-w-sm bg-base-100 text-base-content shadow-2xl">
         <div className="card-body rai">
           <h1 className="text-3xl text-sky-500 text-center font-bold">Register now!</h1>

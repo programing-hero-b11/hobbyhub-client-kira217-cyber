@@ -8,8 +8,8 @@ return (
 <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
 {/* About */}
 <div>
-<h3 className="text-xl font-semibold text-sky-600 mb-4">HobbyHub</h3>
-<p className="text-sm">
+<span className="text-xl font-semibold text-sky-600 mb-4">HobbyHub</span>
+<p className="text-sm mt-4">
 Connect with people through shared passions. Join or create hobby groups and discover your community.
 </p>
 </div>
