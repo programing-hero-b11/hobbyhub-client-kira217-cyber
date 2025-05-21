@@ -1,2 +1,226 @@
 @import "tailwindcss";
-@plugin "daisyui";
+/* @plugin "daisyui"; */
+
+body {
+  @apply bg-white text-black transition-colors duration-300;
+}
+
+.dark body {
+  @apply bg-gray-900 text-white;
+}
+
+nav {
+  background-color: white;
+  transition: background-color 0.3s ease;
+}
+
+.dark nav {
+  background-color: #1a202c; /* same as Tailwind's gray-900 */
+}
+
+.rai {
+  background-color: white;
+  transition: background-color 0.3s ease;
+}
+
+.dark .rai {
+  background-color: #111827; /* same as Tailwind's gray-900 */
+}
+
+/* Light mode */
+p {
+  color: black;
+}
+
+/* Dark mode - requires Tailwind's darkMode: 'class' */
+.dark p {
+  color: #d1d5db; /* This is Tailwind's gray-300 */
+}
+
+h2 {
+  color: black;
+}
+
+/* Dark mode - requires Tailwind's darkMode: 'class' */
+.dark h2{
+  color: white; /* This is Tailwind's gray-300 */
+}
+
+h4 {
+  color: black;
+}
+
+/* Dark mode - requires Tailwind's darkMode: 'class' */
+.dark h4{
+  color: white; /* This is Tailwind's gray-300 */
+}
+/* Light mode */
+a {
+  color: black;
+}
+
+/* Dark mode - requires Tailwind's darkMode: 'class' */
+.dark a {
+  color: #d1d5db; /* This is Tailwind's gray-300 */
+}
+
+th {
+  color: black;
+}
+
+
+.dark th {
+  color: #d1d5db; /* This is Tailwind's gray-300 */
+}
+
+tr {
+  color: black;
+}
+
+
+.dark tr {
+  color: #d1d5db; /* This is Tailwind's gray-300 */
+}
+
+label {
+  color: black;
+  margin-bottom: 4px;
+  font-weight: 600;
+  display: block;
+}
+
+
+.dark label {
+    margin-bottom: 4px;
+  font-weight: 600;
+  display: block;
+  color: #d1d5db; /* This is Tailwind's gray-300 */
+}
+
+option {
+  color: black;
+  margin-bottom: 4px;
+  font-weight: 600;
+  display: block;
+}
+
+
+.dark option {
+    margin-bottom: 4px;
+  font-weight: 600;
+  display: block;
+  color: #d1d5db; /* This is Tailwind's gray-300 */
+}
+
+/* Smooth transition when switching themes */
+input, textarea, select {
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Light mode default input style */
+input {
+  background-color: white;
+  color: #1f2937; /* gray-800 */
+  border: 1px solid #d1d5db; /* gray-300 */
+  border-radius: 0.375rem; /* Tailwind rounded */
+  padding: 0.5rem 0.75rem; /* Tailwind px-3 py-2 */
+}
+
+/* Dark mode input style */
+html.dark input {
+  background-color: #374151; /* gray-700 */
+  color: #f9fafb; /* gray-50 */
+  border-color: #4b5563; /* gray-600 */
+}
+
+textarea {
+  background-color: white;
+  color: #1f2937; /* gray-800 */
+  border: 1px solid #d1d5db; /* gray-300 */
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+html.dark textarea {
+  background-color: #374151; /* gray-700 */
+  color: #f9fafb; /* gray-50 */
+  border-color: #4b5563; /* gray-600 */
+}
+
+
+select {
+  background-color: white;
+  color: #1f2937; /* gray-800 */
+  border: 1px solid #d1d5db; /* gray-300 */
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+html.dark select {
+  background-color: #374151; /* gray-700 */
+  color: #f9fafb; /* gray-50 */
+  border-color: #4b5563; /* gray-600 */
+}
+
+input[type="number"] {
+  background-color: white;
+  color: #1f2937; /* gray-800 */
+  border: 1px solid #d1d5db; /* gray-300 */
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+html.dark input[type="number"] {
+  background-color: #374151; /* gray-700 */
+  color: #f9fafb; /* gray-100 */
+  border-color: #4b5563; /* gray-600 */
+}
+
+/* Light mode */
+.swal-popup {
+  background-color: white;
+  color: black;
+}
+
+/* Dark mode */
+html.dark .swal-popup {
+  background-color: #1f2937; /* Tailwind gray-800 */
+  color: white;
+}
+
+.swal-title {
+  font-weight: bold;
+}
+
+
+/* Light mode (default) */
+.swal-popup {
+  background-color: white;
+  color: black;
+}
+
+/* Dark mode */
+html.dark .swal-popup {
+  background-color: #1f2937; /* Tailwind gray-800 */
+  color: white;
+}
+
+/* Optional: style buttons in dark mode too */
+html.dark .swal-confirm {
+  background-color: #2563eb !important; /* blue-600 */
+  color: white !important;
+}
+
+html.dark .swal-cancel {
+  background-color: #b91c1c !important; /* red-700 */
+  color: white !important;
+}
+
+
+
+
+
+

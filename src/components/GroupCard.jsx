@@ -9,7 +9,7 @@ const GroupCard = ({group}) => {
     <div>
      <div
 
-              className="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden transition transform hover:-translate-y-1 hover:shadow-lg"
+              className="bg-white dark:bg-gray-800 rai border shadow-md rounded-lg overflow-hidden transition transform hover:-translate-y-1 hover:shadow-lg"
             >
               <img
                 src={imageUrl}

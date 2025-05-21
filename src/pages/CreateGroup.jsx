@@ -61,11 +61,16 @@ const CreateGroup = () => {
       .then((res) => res.json())
       .then((data) => {
         Swal.fire({
-          position: "top",
+          toast: true,
+          position: "top-end",
           icon: "success",
           title: "Create Group Successfully",
           showConfirmButton: false,
           timer: 1500,
+          customClass: {
+            popup: "swal-popup",
+            title: "swal-title",
+          },
         });
         console.log("after added the data", data);
       });
@@ -83,8 +88,8 @@ const CreateGroup = () => {
   ];
 
   return (
-    <div className="min-h-screen px-4 py-8 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
-      <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <div className="min-h-screen px-4 py-8 rai bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+      <div className="max-w-3xl mx-auto bg-white rai border dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold mb-6 text-sky-500">
           Create a New Hobby Group
         </h2>
@@ -97,8 +102,7 @@ const CreateGroup = () => {
               name="groupName"
               value={formData.groupName}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
-              required
+              className="w-full"
             />
           </div>
 
@@ -109,7 +113,7 @@ const CreateGroup = () => {
               name="category"
               value={formData.category}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
+              className="w-full px-3 py-2 border rounded text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 transition-colors duration-300"
               required
             >
               <option value="" disabled>
@@ -131,7 +135,7 @@ const CreateGroup = () => {
               value={formData.description}
               onChange={handleChange}
               rows="4"
-              className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
+              className="w-full px-3 py-2 border rounded text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
               required
             />
           </div>
@@ -144,8 +148,7 @@ const CreateGroup = () => {
               name="location"
               value={formData.location}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
-              required
+              className="w-full"
             />
           </div>
 
@@ -157,7 +160,7 @@ const CreateGroup = () => {
               name="maxMembers"
               value={formData.maxMembers}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
+              className="w-full px-3 py-2 border rounded text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 transition-colors duration-300"
               required
             />
           </div>
@@ -170,7 +173,7 @@ const CreateGroup = () => {
               name="startDate"
               value={formData.startDate}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
+              className="w-full"
               required
             />
           </div>
@@ -183,7 +186,7 @@ const CreateGroup = () => {
               name="imageUrl"
               value={formData.imageUrl}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
+              className="w-full"
               required
             />
           </div>
@@ -197,7 +200,7 @@ const CreateGroup = () => {
                 name="name"
                 value={formData.name}
                 readOnly
-                className="w-full px-3 py-2 border rounded bg-gray-100 dark:bg-gray-700 dark:border-gray-600"
+                className="w-full"
               />
             </div>
             <div>
@@ -207,7 +210,7 @@ const CreateGroup = () => {
                 name="email"
                 value={formData.email}
                 readOnly
-                className="w-full px-3 py-2 border rounded bg-gray-100 dark:bg-gray-700 dark:border-gray-600"
+                className="w-full "
               />
             </div>
           </div>

@@ -45,19 +45,24 @@ const UpdateGroup = () => {
       .then((data) => {
         if (data.modifiedCount) {
           Swal.fire({
-            position: "top",
+            toast: true,
+            position: "top-end",
             icon: "success",
-            title: "Updated Successfully",
+            title: "Update Group Successfully",
             showConfirmButton: false,
             timer: 1500,
+            customClass: {
+              popup: "swal-popup",
+              title: "swal-title",
+            },
           });
         }
       });
   };
 
   return (
-    <div className="min-h-screen px-4 py-8 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
-      <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <div className="min-h-screen px-4 py-8 rai bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+      <div className="max-w-3xl mx-auto rai border bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold mb-6 text-sky-500">
           Update Your Hobby Group
         </h2>
@@ -69,8 +74,7 @@ const UpdateGroup = () => {
               type="text"
               name="groupName"
               defaultValue={groupName}
-              className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
-              required
+              className="w-full"
             />
           </div>
 
@@ -80,14 +84,14 @@ const UpdateGroup = () => {
             <select
               name="category"
               defaultValue={category}
-              className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
+              className="w-full px-3 py-2 border rounded text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 transition-colors duration-300"
               required
             >
               <option value="" disabled>
                 Select a category
               </option>
               {categories.map((cat) => (
-                <option key={cat} defaultValue={groupName}>
+                <option key={cat} value={cat}>
                   {cat}
                 </option>
               ))}
@@ -101,7 +105,7 @@ const UpdateGroup = () => {
               name="description"
               defaultValue={description}
               rows="4"
-              className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
+              className="w-full px-3 py-2 border rounded text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
               required
             />
           </div>
@@ -113,8 +117,7 @@ const UpdateGroup = () => {
               type="text"
               name="location"
               defaultValue={location}
-              className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
-              required
+              className="w-full"
             />
           </div>
 
@@ -125,7 +128,7 @@ const UpdateGroup = () => {
               type="number"
               name="maxMembers"
               defaultValue={maxMembers}
-              className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
+              className="w-full px-3 py-2 border rounded text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 transition-colors duration-300"
               required
             />
           </div>
@@ -137,7 +140,7 @@ const UpdateGroup = () => {
               type="date"
               name="startDate"
               defaultValue={startDate}
-              className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
+              className="w-full"
               required
             />
           </div>
@@ -149,7 +152,7 @@ const UpdateGroup = () => {
               type="text"
               name="imageUrl"
               defaultValue={imageUrl}
-              className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:border-gray-600"
+              className="w-full"
               required
             />
           </div>
@@ -163,7 +166,7 @@ const UpdateGroup = () => {
                 name="name"
                 defaultValue={name}
                 readOnly
-                className="w-full px-3 py-2 border rounded bg-gray-100 dark:bg-gray-700 dark:border-gray-600"
+                className="w-full"
               />
             </div>
             <div>
@@ -173,7 +176,7 @@ const UpdateGroup = () => {
                 name="email"
                 defaultValue={email}
                 readOnly
-                className="w-full px-3 py-2 border rounded bg-gray-100 dark:bg-gray-700 dark:border-gray-600"
+                className="w-full "
               />
             </div>
           </div>

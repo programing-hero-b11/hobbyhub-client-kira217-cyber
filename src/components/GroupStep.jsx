@@ -2,7 +2,7 @@ import React from 'react';
 
 const GroupStep = () => {
 return (
-<div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+<div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full rai lg:max-w-screen-xl md:px-24 lg:px-8 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
 <div className="max-w-2xl mx-auto text-center mb-12">
 <p className="text-sm font-medium tracking-wide uppercase text-sky-600 dark:text-sky-400 mb-2">
 How It Works
@@ -12,14 +12,11 @@ Get Started in Four Simple Steps
 </h2>
 </div>
 
-php-template
-Copy
-Edit
   <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
     {/* Steps Grid */}
     <div className="grid gap-6 md:grid-cols-2 md:col-span-2 lg:col-span-3">
       {/* Step 1 */}
-      <div className="rounded-2xl p-5 transition duration-300 hover:bg-sky-100 dark:hover:bg-sky-800 bg-white dark:bg-gray-800 shadow">
+      <div className="rounded-2xl border p-5 transition duration-300 rai hover:bg-sky-100 dark:hover:bg-sky-800 bg-white dark:bg-gray-800 shadow">
         <div className="flex items-center mb-2">
           <span className="w-6 h-6 mr-3 flex items-center justify-center text-xs font-bold text-white bg-sky-500 rounded-full">
             1
@@ -32,7 +29,7 @@ Edit
       </div>
 
       {/* Step 2 */}
-      <div className="rounded-2xl p-5 transition duration-300 hover:bg-sky-100 dark:hover:bg-sky-800 bg-white dark:bg-gray-800 shadow">
+      <div className="rounded-2xl border p-5 transition rai duration-300 hover:bg-sky-100 dark:hover:bg-sky-800 bg-white dark:bg-gray-800 shadow">
         <div className="flex items-center mb-2">
           <span className="w-6 h-6 mr-3 flex items-center justify-center text-xs font-bold text-white bg-sky-500 rounded-full">
             2
@@ -45,7 +42,7 @@ Edit
       </div>
 
       {/* Step 3 */}
-      <div className="rounded-2xl p-5 transition duration-300 hover:bg-sky-100 dark:hover:bg-sky-800 bg-white dark:bg-gray-800 shadow">
+      <div className="rounded-2xl border p-5 transition rai duration-300 hover:bg-sky-100 dark:hover:bg-sky-800 bg-white dark:bg-gray-800 shadow">
         <div className="flex items-center mb-2">
           <span className="w-6 h-6 mr-3 flex items-center justify-center text-xs font-bold text-white bg-sky-500 rounded-full">
             3
@@ -58,7 +55,7 @@ Edit
       </div>
 
       {/* Step 4 */}
-      <div className="rounded-2xl p-5 transition duration-300 hover:bg-sky-100 dark:hover:bg-sky-800 bg-white dark:bg-gray-800 shadow">
+      <div className="rounded-2xl border p-5 transition rai duration-300 hover:bg-sky-100 dark:hover:bg-sky-800 bg-white dark:bg-gray-800 shadow">
         <div className="flex items-center mb-2">
           <span className="w-6 h-6 mr-3 flex items-center justify-center text-xs font-bold text-white bg-sky-500 rounded-full">
             4

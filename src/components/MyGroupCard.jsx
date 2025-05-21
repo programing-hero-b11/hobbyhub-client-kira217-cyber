@@ -11,14 +11,20 @@ const MyGroupCard = ({ group, onDelete }) => {
   };
 
   const handleDelete = (_id) => {
-    Swal.fire({
+     Swal.fire({
       title: "Are you sure?",
-      text: "Delete Your Hobby Group",
+      text: "Do you want to delete this group?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
+      customClass: {
+        popup: "swal-popup",
+        title: "swal-title",
+        confirmButton: "swal-confirm",
+        cancelButton: "swal-cancel",
+      }
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`http://localhost:3000/groups/${_id}`, {
@@ -27,7 +33,18 @@ const MyGroupCard = ({ group, onDelete }) => {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount) {
-              Swal.fire("Deleted!", "Your Group Deleted Successfully.", "success");
+              Swal.fire({
+                        toast: true,
+                        position: "top-end",
+                        icon: "success",
+                        title: "Delete Group Successfully",
+                        showConfirmButton: false,
+                        timer: 1500,
+                        customClass: {
+                          popup: "swal-popup",
+                          title: "swal-title",
+                        },
+                      });
               onDelete(_id);
             }
           });

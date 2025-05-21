@@ -1,29 +1,42 @@
-import React, { use, useState } from "react";
+import React, { useState, useEffect, use } from "react";
 import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router";
-import './Navbar.css'
+import "./Navbar.css";
 import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
-//   const [isLoggedIn,setIsLoggedIn] = useState(true); // change to false to test login/register view
-  const navigate = useNavigate();
 
-  const {user,setUser,logout} = use(AuthContext);
+  // ✅ Dark mode with localStorage + system preference
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) return savedTheme === "dark";
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
 
   const toggleTheme = () => {
-    setDarkMode(!darkMode);
-    document.documentElement.classList.toggle("dark");
+    setDarkMode((prev) => !prev);
   };
 
+  const navigate = useNavigate();
+  const { user, setUser, logout } = use(AuthContext);
 
   const handleLogout = () => {
     logout()
       .then(() => {
         navigate("/");
-        toast.success("Logout Successfully")
+        toast.success("Logout Successfully");
       })
       .catch((error) => {
         toast.error(error.message);
@@ -47,11 +60,7 @@ const Navbar = () => {
             <NavLink to="/allGroups" className="text-sky-500 font-medium">
               All Groups
             </NavLink>
-
-            <NavLink
-              to="/groups/create"
-              className="text-sky-500 font-medium"
-            >
+            <NavLink to="/groups/create" className="text-sky-500 font-medium">
               Create Group{" "}
               <span className="text-xs text-red-400">(Private)</span>
             </NavLink>
@@ -66,7 +75,7 @@ const Navbar = () => {
                 </NavLink>
                 <NavLink
                   to="/register"
-                  className=" text-sky-500 hover:underline"
+                  className="text-sky-500 hover:underline"
                 >
                   Register
                 </NavLink>
@@ -83,7 +92,10 @@ const Navbar = () => {
                     {user?.displayName}
                   </span>
                 </div>
-                <button onClick={handleLogout} className="bg-red-500 text-white px-3 py-1 rounded hover:cursor-pointer  hover:bg-red-700 transition">
+                <button
+                  onClick={handleLogout}
+                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700 transition"
+                >
                   Logout
                 </button>
               </div>
@@ -95,7 +107,7 @@ const Navbar = () => {
               className="text-xl text-yellow-400 dark:text-white hover:cursor-pointer"
               title="Toggle Theme"
             >
-              {darkMode ? <FaSun /> : <FaMoon />}
+              {darkMode ? <FaSun /> : <FaMoon color="black" />}
             </button>
           </div>
 
@@ -106,18 +118,22 @@ const Navbar = () => {
               className="text-xl text-yellow-400 dark:text-white"
               title="Toggle Theme"
             >
-              {darkMode ? <FaSun /> : <FaMoon />}
+              {darkMode ? <FaSun /> : <FaMoon color="black" />}
             </button>
             <button onClick={() => setIsOpen(!isOpen)} className="text-xl">
-              {isOpen ? <FaTimes color="white" /> : <FaBars color="white"/>}
+              {isOpen ? <FaTimes className="text-sky-500" /> : <FaBars className="text-sky-500" />}
             </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden bg-white dark:bg-gray-900 px-6 py-4 space-y-3">
-            <NavLink to="/" onClick={() => setIsOpen(false)} className="block text-sky-500 hover:underline">
+          <nav className="md:hidden bg-white dark:bg-gray-900 px-6 py-4 space-y-3">
+            <NavLink
+              to="/"
+              onClick={() => setIsOpen(false)}
+              className="block text-sky-500 hover:underline"
+            >
               Home
             </NavLink>
             <NavLink
@@ -132,15 +148,14 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
               className="block text-sky-500 hover:underline"
             >
-              Create Group{" "}
-              <span className="text-xs text-red-400">(Private)</span>
+              Create Group
             </NavLink>
             <NavLink
               to="/myGroups"
               onClick={() => setIsOpen(false)}
               className="block text-sky-500 hover:underline"
             >
-              My Groups <span className="text-xs text-red-400">(Private)</span>
+              My Groups
             </NavLink>
 
             {!user ? (
@@ -172,10 +187,15 @@ const Navbar = () => {
                     {user.displayName}
                   </span>
                 </div>
-                <button className="text-red-500 hover:underline">Logout</button>
+                <button
+                  onClick={handleLogout}
+                  className="text-red-500 hover:underline"
+                >
+                  Logout
+                </button>
               </>
             )}
-          </div>
+          </nav>
         )}
       </nav>
     </div>

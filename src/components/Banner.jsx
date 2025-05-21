@@ -2,11 +2,12 @@ import React from "react";
 import { Link } from "react-router";
 import { Typewriter } from "react-simple-typewriter";
 import { Tooltip } from "react-tooltip";
+import '../index.css'
 
 const Banner = () => {
   return (
     <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-      <div className="flex flex-col max-w-screen-lg overflow-hidden bg-white dark:bg-gray-800 border rounded shadow-sm lg:flex-row sm:mx-auto">
+      <div className="flex flex-col max-w-screen-lg rai overflow-hidden bg-white dark:bg-gray-800 border rounded shadow-sm lg:flex-row sm:mx-auto">
         <div className="relative lg:w-1/2">
           <img
             src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
@@ -22,11 +23,11 @@ const Banner = () => {
           </svg>
         </div>
 
-        <div className="flex flex-col justify-center p-8 lg:p-16 lg:pl-10 lg:w-1/2 bg-white dark:bg-gray-800">
-          <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider uppercase rounded-full bg-sky-100 text-sky-900 dark:bg-sky-900 dark:text-sky-100">
+        <div className="flex flex-col rai new justify-center p-8 lg:p-16 lg:pl-10 lg:w-1/2 bg-white dark:bg-gray-800">
+          <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider uppercase rounded-full bg-sky-100 text-sky-500 dark:bg-sky-500">
             HobbyHub
           </p>
-          <h2 className="mb-3 text-3xl font-extrabold leading-none sm:text-4xl text-gray-900 dark:text-white">
+          <h2 className="mb-3 text-3xl new font-extrabold leading-none sm:text-4xl text-gray-900 dark:text-white">
             Connect through shared{" "}
             <span className="text-sky-500">
               <Typewriter

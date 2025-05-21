@@ -8,7 +8,7 @@ const AllGroups = () => {
 
   return (
     <div>
-      <div className="min-h-screen px-4 py-8 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+      <div className="min-h-screen px-4 py-8 rai bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-3xl font-bold text-center text-sky-500 mb-10">
             All Hobby Groups
