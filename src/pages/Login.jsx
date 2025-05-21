@@ -80,7 +80,7 @@ const Login = () => {
             </div>
 
             <div className="mt-2">
-              <a className="link link-hover text-sm font-bold">Forgot password?</a>
+              <a className="link link-hover text-sm font-bold underline">Forgot password?</a>
             </div>
 
             <button type="submit" className="btn btn-neutral w-full mt-4 text-xl">
@@ -111,8 +111,8 @@ const Login = () => {
 
           <p className="mt-4 text-center text-base-content">
             New user?{" "}
-            <Link to="/register" className="text-blue-500 underline">
-              Register Now
+            <Link to="/register" className=" underline">
+              <span className="text-sky-500">Register Now</span>
             </Link>
           </p>
 
