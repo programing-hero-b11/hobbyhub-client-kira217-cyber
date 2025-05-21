@@ -20,6 +20,8 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
+        hydrateFallbackElement:<Loading></Loading>,
+        loader:()=>fetch('http://localhost:3000/groups'),
         Component: Home,
       },
       {
