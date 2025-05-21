@@ -121,7 +121,7 @@ const Navbar = () => {
               Home
             </NavLink>
             <NavLink
-              to="/groups"
+              to="/allGroups"
               onClick={() => setIsOpen(false)}
               className="block text-sky-500 hover:underline"
             >
