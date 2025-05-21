@@ -1,56 +1,64 @@
-import React, { use, useEffect, useState,  } from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import toast from "react-hot-toast";
-import { AuthContext } from "../context/AuthContext"; 
 
 const GroupDetails = () => {
   const group = useLoaderData();
-  const { _id, groupName, category, description, location, maxMembers, startDate, imageUrl, name, email } = group;
+  const {
+    _id,
+    groupName,
+    category,
+    description,
+    location,
+    maxMembers,
+    startDate,
+    imageUrl,
+    name,
+    email,
+  } = group;
 
-  const { user } = use(AuthContext); // Get logged-in user
-  const userEmail = user?.email;
   const isGroupExpired = new Date(startDate) < new Date();
-
   const [hasJoined, setHasJoined] = useState(false);
 
-  // Load join state from localStorage based on user
+  // 🔁 Load join status from localStorage on first render
   useEffect(() => {
-    const allJoins = JSON.parse(localStorage.getItem("joinedGroups")) || {};
-    const joinedForUser = allJoins[userEmail] || [];
-    setHasJoined(joinedForUser.includes(_id));
-  }, [_id, userEmail]);
-
-  const handleJoin = () => {
-    const allJoins = JSON.parse(localStorage.getItem("joinedGroups")) || {};
-    const joinedForUser = allJoins[userEmail] || [];
-
-    if (!joinedForUser.includes(_id)) {
-      joinedForUser.push(_id);
-      allJoins[userEmail] = joinedForUser;
-      localStorage.setItem("joinedGroups", JSON.stringify(allJoins));
+    const joinedGroups = JSON.parse(localStorage.getItem("joinedGroups")) || [];
+    if (joinedGroups.includes(_id)) {
       setHasJoined(true);
-      toast.success("You joined the group!");
+    }
+  }, [_id]);
+
+  // ✅ Join handler
+  const handleJoin = () => {
+    const joinedGroups = JSON.parse(localStorage.getItem("joinedGroups")) || [];
+    if (!joinedGroups.includes(_id)) {
+      joinedGroups.push(_id);
+      localStorage.setItem("joinedGroups", JSON.stringify(joinedGroups));
+      setHasJoined(true);
+      toast.success("You have successfully joined the group!");
     }
   };
 
+  // ❌ Leave handler
   const handleLeave = () => {
-    const allJoins = JSON.parse(localStorage.getItem("joinedGroups")) || {};
-    let joinedForUser = allJoins[userEmail] || [];
-
-    joinedForUser = joinedForUser.filter((id) => id !== _id);
-    allJoins[userEmail] = joinedForUser;
-    localStorage.setItem("joinedGroups", JSON.stringify(allJoins));
+    let joinedGroups = JSON.parse(localStorage.getItem("joinedGroups")) || [];
+    joinedGroups = joinedGroups.filter((id) => id !== _id);
+    localStorage.setItem("joinedGroups", JSON.stringify(joinedGroups));
     setHasJoined(false);
-    toast("You left the group.", {
+    toast("You have left the group.", {
       icon: "👋",
-      style: { background: "#f87171", color: "white" },
+      style: {
+        background: "#f87171",
+        color: "white",
+      },
     });
   };
 
   return (
-    <div className="min-h-screen px-4 rai py-10 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+    <div className="min-h-screen rai px-4 py-10 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
       <div className="max-w-4xl mx-auto rai border bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
         <img src={imageUrl} alt={groupName} className="w-full h-64 object-cover" />
+
         <div className="p-6">
           <h2 className="text-3xl font-bold text-sky-500 mb-4">{groupName}</h2>
 
@@ -72,7 +80,7 @@ const GroupDetails = () => {
             <p className="text-gray-600 dark:text-gray-400">{email}</p>
           </div>
 
-          {/* Show based on state */}
+          {/* Join/Leave Button or Expired Message */}
           {isGroupExpired ? (
             <p className="text-red-500 font-semibold mt-4">
               This group is no longer active.
@@ -82,14 +90,14 @@ const GroupDetails = () => {
               {hasJoined ? (
                 <button
                   onClick={handleLeave}
-                  className="bg-red-500 hover:cursor-pointer hover:bg-red-600 text-white px-5 py-2 rounded"
+                  className="bg-red-500 hover:cursor-pointer hover:bg-red-600 text-white px-5 py-2 rounded transition"
                 >
                   Leave Group
                 </button>
               ) : (
                 <button
                   onClick={handleJoin}
-                  className="bg-sky-500 hover:cursor-pointer hover:bg-sky-600 text-white px-5 py-2 rounded"
+                  className="bg-sky-500 hover:cursor-pointer hover:bg-sky-600 text-white px-5 py-2 rounded transition"
                 >
                   Join Group
                 </button>
