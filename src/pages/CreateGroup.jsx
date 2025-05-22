@@ -51,7 +51,7 @@ const CreateGroup = () => {
 
     // send the form info in database
 
-    fetch("http://localhost:3000/groups", {
+    fetch("https://y-liard-nu.vercel.app/groups", {
       method: "POST",
       headers: {
         "content-type": "application/json",

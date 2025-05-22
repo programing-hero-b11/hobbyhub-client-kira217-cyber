@@ -20,39 +20,39 @@ const MyGroups = () => {
 
   const handleDelete = (id) => {
     Swal.fire({
-  title: "Are you sure?",
-  text: "Do you want to delete this group?",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Yes, delete it!",
-  customClass: {
-    popup: "swal-popup",
-    title: "swal-title",
-    confirmButton: "swal-confirm",
-    cancelButton: "swal-cancel",
-  }
-}).then((result) => {
+      title: "Are you sure?",
+      text: "Do you want to delete this group?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      customClass: {
+        popup: "swal-popup",
+        title: "swal-title",
+        confirmButton: "swal-confirm",
+        cancelButton: "swal-cancel",
+      },
+    }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/groups/${id}`, {
+        fetch(`https://y-liard-nu.vercel.app/groups/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount) {
               Swal.fire({
-                        toast: true,
-                        position: "top-end",
-                        icon: "success",
-                        title: "Create Group Successfully",
-                        showConfirmButton: false,
-                        timer: 1500,
-                        customClass: {
-                          popup: "swal-popup",
-                          title: "swal-title",
-                        },
-                      });
+                toast: true,
+                position: "top-end",
+                icon: "success",
+                title: "Create Group Successfully",
+                showConfirmButton: false,
+                timer: 1500,
+                customClass: {
+                  popup: "swal-popup",
+                  title: "swal-title",
+                },
+              });
               const updatedGroups = groups.filter((group) => group._id !== id);
               setGroups(updatedGroups);
             }

@@ -11,7 +11,7 @@ const MyGroupCard = ({ group, onDelete }) => {
   };
 
   const handleDelete = (_id) => {
-     Swal.fire({
+    Swal.fire({
       title: "Are you sure?",
       text: "Do you want to delete this group?",
       icon: "warning",
@@ -24,27 +24,27 @@ const MyGroupCard = ({ group, onDelete }) => {
         title: "swal-title",
         confirmButton: "swal-confirm",
         cancelButton: "swal-cancel",
-      }
+      },
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/groups/${_id}`, {
+        fetch(`https://y-liard-nu.vercel.app/groups/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount) {
               Swal.fire({
-                        toast: true,
-                        position: "top-end",
-                        icon: "success",
-                        title: "Delete Group Successfully",
-                        showConfirmButton: false,
-                        timer: 1500,
-                        customClass: {
-                          popup: "swal-popup",
-                          title: "swal-title",
-                        },
-                      });
+                toast: true,
+                position: "top-end",
+                icon: "success",
+                title: "Delete Group Successfully",
+                showConfirmButton: false,
+                timer: 1500,
+                customClass: {
+                  popup: "swal-popup",
+                  title: "swal-title",
+                },
+              });
               onDelete(_id);
             }
           });

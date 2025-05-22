@@ -16,12 +16,12 @@ export const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
-    errorElement: <ErrorPage />, 
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        hydrateFallbackElement:<Loading></Loading>,
-        loader:()=>fetch('http://localhost:3000/groups'),
+        hydrateFallbackElement: <Loading></Loading>,
+        loader: () => fetch("https://y-liard-nu.vercel.app/groups"),
         Component: Home,
       },
       {
@@ -33,39 +33,49 @@ export const router = createBrowserRouter([
         Component: Register,
       },
       {
-        path:"allGroups",
-        hydrateFallbackElement:<Loading></Loading>,
-        loader:()=>fetch('http://localhost:3000/groups'),
-        Component:AllGroups,
+        path: "allGroups",
+        hydrateFallbackElement: <Loading></Loading>,
+        loader: () => fetch("https://y-liard-nu.vercel.app/groups"),
+        Component: AllGroups,
       },
-      { 
-        path: "groups/create", 
-        element:<PrivetRoute>
+      {
+        path: "groups/create",
+        element: (
+          <PrivetRoute>
             <CreateGroup></CreateGroup>
-        </PrivetRoute>
+          </PrivetRoute>
+        ),
       },
-      { 
+      {
         path: "myGroups",
-        loader:()=>fetch('http://localhost:3000/groups'), 
-        element:<PrivetRoute>
+        loader: () => fetch("https://y-liard-nu.vercel.app/groups"),
+        element: (
+          <PrivetRoute>
             <MyGroups></MyGroups>
-        </PrivetRoute>
+          </PrivetRoute>
+        ),
       },
-      { 
+      {
         path: "groups/:id",
-        hydrateFallbackElement:<Loading></Loading>,
-        loader:({params})=>fetch(`http://localhost:3000/groups/${params.id}`),
-        element:<PrivetRoute>
-          <GroupDetails></GroupDetails>
-        </PrivetRoute>
+        hydrateFallbackElement: <Loading></Loading>,
+        loader: ({ params }) =>
+          fetch(`https://y-liard-nu.vercel.app/groups/${params.id}`),
+        element: (
+          <PrivetRoute>
+            <GroupDetails></GroupDetails>
+          </PrivetRoute>
+        ),
       },
-      { 
+      {
         path: "updateGroup/:id",
-        hydrateFallbackElement:<Loading></Loading>,
-        loader:({params})=>fetch(`http://localhost:3000/groups/${params.id}`), 
-        element:<PrivetRoute>
-          <UpdateGroup></UpdateGroup>
-        </PrivetRoute>
+        hydrateFallbackElement: <Loading></Loading>,
+        loader: ({ params }) =>
+          fetch(`https://y-liard-nu.vercel.app/groups/${params.id}`),
+        element: (
+          <PrivetRoute>
+            <UpdateGroup></UpdateGroup>
+          </PrivetRoute>
+        ),
       },
     ],
   },

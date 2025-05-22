@@ -34,7 +34,7 @@ const UpdateGroup = () => {
 
     // send the update group in the database
 
-    fetch(`http://localhost:3000/groups/${_id}`, {
+    fetch(`https://y-liard-nu.vercel.app/groups/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
