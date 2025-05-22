@@ -33,15 +33,16 @@ const Navbar = () => {
   const { user, setUser, logout } = use(AuthContext);
 
   const handleLogout = () => {
-    logout()
-      .then(() => {
-        navigate("/");
-        toast.success("Logout Successfully");
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
-  };
+  logout()
+    .then(() => {
+      localStorage.removeItem("joinedGroups");
+      navigate("/");
+      toast.success("Logout Successfully");
+    })
+    .catch((error) => {
+      toast.error(error.message);
+    });
+};
 
   return (
     <div>
