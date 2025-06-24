@@ -70,10 +70,9 @@ This is a full-featured **Library Management System** web application where user
 
 ## How to Run Locally
 
-### 🔧 Frontend Setup:
 
 1. Clone the frontend repository:
 ```bash
-git clone client : 
+git clone client : https://github.com/programing-hero-b11/hobbyhub-client-kira217-cyber
 git clone server : 
 
