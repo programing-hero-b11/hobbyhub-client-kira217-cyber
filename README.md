@@ -74,5 +74,5 @@ This is a full-featured **Library Management System** web application where user
 1. Clone the frontend repository:
 ```bash
 git clone client : https://github.com/programing-hero-b11/hobbyhub-client-kira217-cyber.git
-git clone server : 
+git clone server : https://github.com/programing-hero-b11/hobbyhub-server-kira217-cyber.git
 
