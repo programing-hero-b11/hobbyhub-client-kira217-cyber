@@ -1,51 +1,79 @@
-# React + Vite
+# Library Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-
-
-
-
-#  HobbyHub
-
-HobbyHub is a vibrant community platform designed to help users discover, create, and manage local hobby groups. Whether you're into painting, hiking, gaming, or gardening — HobbyHub connects people with shared passions.
-
- **Live Site:** 
+[Live Demo](https://assignment-ten-e8281.web.app/)
 
 ---
 
-##  Features
+## Project Overview
 
--  **Authentication System** — Secure login and registration system to protect user data.
-
-- **Create & Manage Groups** — Users can create hobby groups and manage them with ease.
-
-- **Responsive Design** — Fully responsive on all devices with support for dark mode.
-
-- **Discover Local Communities** — Browse and join local hobby-based groups by category and interest.
-
-- **Smart Deletion** — SweetAlert2 integration provides safe and stylish confirmation prompts when deleting groups.
-
+This is a full-featured **Library Management System** web application where users can view available books, borrow them, and manage their own book history. Admins or logged-in users can add, update, or delete books. The app uses a custom backend with MongoDB for data storage and Firebase for authentication.
 
 ---
 
+## Screenshot
 
-## Tech Stack
+![Library Management System Screenshot](https://i.ibb.co/tp9SCdGM/Screenshot-2025-06-25-012826.png)
+<!-- Replace with a real screenshot URL of your site -->
 
-- React.js + React Router
+---
+
+## Main Technologies
+
+- React.js
+- Node.js
+- Express.js
+- MongoDB (with Mongoose)
+- Firebase Authentication
 - Tailwind CSS
-- Context API for Auth Management
-- SweetAlert2 for modals
-- SwiperJS for sliders
+- DaisyUI
+- React Router
+- React Hook Form
 
 ---
 
+## Main Features
+
+- 🔐 User Registration & Login (via Firebase Auth)
+- 📚 View all books (filter by category or availability)
+- 📖 Borrow a book with return date (if available)
+- 📝 Admins can Add / Update / Delete books
+- 🔍 Book details page with modal-based borrowing form
+- 📄 My Borrowed Books dashboard for users
+- 💻 Fully responsive UI using Tailwind and DaisyUI
+- 🌐 Protected routes for authenticated users
+- 📦 Integrated with MongoDB database for persistent storage
+
+---
+
+## Dependencies
+
+**Frontend:**
+- react
+- react-dom
+- react-router-dom
+- react-hook-form
+- firebase
+- axios
+- tailwindcss
+- daisyui
+- @heroicons/react
+
+**Backend (Node Server):**
+- express
+- cors
+- dotenv
+- mongodb (mongoose or native driver)
+- jsonwebtoken
+- bcryptjs (if used for encryption)
+
+---
+
+## How to Run Locally
+
+### 🔧 Frontend Setup:
+
+1. Clone the frontend repository:
+```bash
+git clone client : 
+git clone server : 
 
