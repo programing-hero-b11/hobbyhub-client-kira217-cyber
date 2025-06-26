@@ -27,7 +27,6 @@ This is a full-featured **Library Management System** web application where user
 - Tailwind CSS
 - DaisyUI
 - React Router
-- React Hook Form
 
 ---
 
