@@ -1,4 +1,4 @@
-# Library Management System
+# Hobby Group Management System
 
 [Live Demo](https://assignment-ten-e8281.web.app/)
 
